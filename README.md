@@ -42,7 +42,7 @@ cd iot-safezone
 O app foi desenvolvido em **React Native com Expo**.
 
 ```bash
-git clone https://github.com/Murilo-Capristo/mobile-safezone
+git clone https://github.com/Murilo-Capristo/mobile-safezone.git
 cd mobile-safezone
 npm install
 npx expo start
