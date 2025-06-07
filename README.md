@@ -15,6 +15,80 @@ Ideal para aplicações como:
 - Nicolas Guinante Cavalcanti - RM557844  
 
 ---
+## 📋 Como testar o projeto
+
+### 🖥️ 1. Acesse a VM no Azure
+
+Execute os comandos listados no arquivo `azure.txt` (fornecido na entrega) para iniciar a máquina virtual com:
+
+- Mosquitto (broker MQTT)
+- Node-RED
+
+> A VM será responsável por receber dados do ESP32 e repassar ao backend.
+
+---
+
+### 📦 2. Clone o repositório
+
+```bash
+git clone https://github.com/Murilo-Capristo/iot-safezone
+cd iot-safezone
+```
+
+---
+
+### 📲 3. Rode o aplicativo mobile
+
+O app foi desenvolvido em **React Native com Expo**.
+
+```bash
+git clone https://github.com/Murilo-Capristo/mobile-safezone
+cd mobile-safezone
+npm install
+npx expo start
+```
+
+Use o aplicativo **Expo Go** no celular para escanear o QR Code.
+
+Crie um usuário ADMIN para ter acesso às leituras ou use a conta já criada, listada no arquivo `azure.txt`.
+
+---
+
+### 🤖 4. Simule o hardware com Wokwi
+
+O ESP32 simula a leitura de tags RFID.
+
+1. Acesse [https://wokwi.com](https://wokwi.com)
+2. Crie um novo projeto
+3. Substitua o conteúdo pelo código da pasta:
+
+```
+iot-safezone/
+```
+
+Bibliotecas Necessárias:
+1. PubSubClient
+
+Mude a temperatura e Umidade para ter leituras variadas, o app mostrará apenas os avisos, mas ambos são salvos em nosso banco de dados.
+
+---
+
+## 🚨 Regras de Alerta (`checkAlert`)
+
+O sistema analisa as leituras de temperatura e umidade para identificar condições ambientais críticas e emitir alertas automáticos. As regras seguem a seguinte lógica:
+
+| Condição | Alerta |
+|----------|--------|
+| 🌡️ `Temperatura > 35°C` e `Umidade > 70%` | **Estresse térmico alto** |
+| 🔥 `Temperatura > 30°C` e `Umidade < 30%` | **Ambiente muito seco e quente** |
+| ❄️ `Temperatura < 5°C` e `Umidade > 80%` | **Risco de geada** |
+| 🌫️ `10°C ≤ Temperatura ≤ 20°C` e `Umidade > 85%` | **Risco de fungos e doenças** |
+| 🥵 `Temperatura > 40°C` | **Temperatura muito alta** |
+| 🔥 `Temperatura > 50°C` e `Umidade < 30%` | **Risco de queimada** |
+| 💧 `Umidade < 20%` | **Umidade muito baixa** |
+| 🧊 `Temperatura < 0°C` | **Congelamento possível** |
+
+---
 
 ## 🎯 Objetivo
 
@@ -42,22 +116,6 @@ Desenvolver uma solução IoT que:
 
 ---
 
-## 🚨 Regras de Alerta (`checkAlert`)
-
-O sistema analisa as leituras de temperatura e umidade para identificar condições ambientais críticas e emitir alertas automáticos. As regras seguem a seguinte lógica:
-
-| Condição | Alerta |
-|----------|--------|
-| 🌡️ `Temperatura > 35°C` e `Umidade > 70%` | **Estresse térmico alto** |
-| 🔥 `Temperatura > 30°C` e `Umidade < 30%` | **Ambiente muito seco e quente** |
-| ❄️ `Temperatura < 5°C` e `Umidade > 80%` | **Risco de geada** |
-| 🌫️ `10°C ≤ Temperatura ≤ 20°C` e `Umidade > 85%` | **Risco de fungos e doenças** |
-| 🥵 `Temperatura > 40°C` | **Temperatura muito alta** |
-| 🔥 `Temperatura > 50°C` e `Umidade < 30%` | **Risco de queimada** |
-| 💧 `Umidade < 20%` | **Umidade muito baixa** |
-| 🧊 `Temperatura < 0°C` | **Congelamento possível** |
-
----
 
 ## 📤 Formato dos Dados Enviados
 
