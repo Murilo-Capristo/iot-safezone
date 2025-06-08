@@ -28,7 +28,7 @@ Execute os comandos listados no arquivo `azure.txt` (fornecido na entrega) para 
 
 ---
 
-### 📦 2. Clone o repositório
+### 📦 2. Clone o repositório IoT
 
 ```bash
 git clone https://github.com/Murilo-Capristo/iot-safezone.git
@@ -37,7 +37,7 @@ cd iot-safezone
 
 ---
 
-### 📲 3. Rode o aplicativo mobile
+### 📲 3. Clone o Repositório Mobile para Dashboard
 
 O app foi desenvolvido em **React Native com Expo**.
 
