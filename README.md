@@ -59,7 +59,7 @@ Crie um usuário ADMIN para ter acesso às leituras ou use a conta já criada, l
 O ESP32 simula a leitura de tags RFID.
 
 1. Acesse [https://wokwi.com](https://wokwi.com)
-2. Crie um novo projeto
+2. Crie um novo projeto com ESP32
 3. Substitua o conteúdo pelo código da pasta:
 
 ```
